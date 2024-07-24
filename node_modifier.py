@@ -25,6 +25,7 @@ class NodeModifier:
         columns = [d[0] for d in cursor.description]
         for node in nodes:
             node = dict(zip(columns, node))
+            node["endpoints"] = json.loads(node["endpoints"])
             node["host_info"] = json.loads(node["host_info"])
             rows.append(node)
 
